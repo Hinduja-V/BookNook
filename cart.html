@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart | BookNook</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+    <div id="layout-header"></div>
+    <main class="container" style="padding: 60px 0;">
+      <h1 style="font-family:'Playfair Display',serif; margin-bottom:32px;">Shopping Cart</h1>
+      <div id="empty-cart" style="display:none; text-align:center; padding: 40px;">
+         <p>Your cart is empty.</p>
+         <a href="shop.html" class="btn btn-primary" style="margin-top:16px;">Continue Shopping</a>
+      </div>
+      <div id="cart-content" style="display:flex; gap:40px;">
+         <div id="cart-items-container" style="flex:2; display:flex; flex-direction:column; gap:24px;"></div>
+         <div style="flex:1; background:var(--cream); padding:24px; border-radius:8px; height:fit-content;">
+            <h3>Order Summary</h3>
+            <div id="cart-total" style="font-size:1.5rem; font-weight:600; margin:24px 0;"></div>
+            <a href="checkout.html" class="btn btn-primary" style="display:block; text-align:center;">Proceed to Checkout</a>
+         </div>
+      </div>
+    </main>
+    <div id="layout-footer"></div>
+    <div id="toast-container" class="toast-container"></div>
+    <script src="js/data.js"></script>
+    <script src="js/app.js"></script>
+    <script>
+      const updateItemQty = (id, change) => {
+        const cart = storage.get('cart', []);
+        const item = cart.find(i => i.id === id);
+        if(item) {
+          item.quantity = Math.max(1, item.quantity + change);
+          storage.set('cart', cart);
+          renderCart();
+          updateBadges();
+        }
+      };
+      
+      const removeItem = (id) => {
+        let cart = storage.get('cart', []);
+        cart = cart.filter(i => i.id !== id);
+        storage.set('cart', cart);
+        renderCart();
+        updateBadges();
+      };
+      
+      const renderCart = () => {
+        const cart = storage.get('cart', []);
+        const container = document.getElementById('cart-items-container');
+        const emptyState = document.getElementById('empty-cart');
+        const cartContent = document.getElementById('cart-content');
+        
+        if (cart.length === 0) {
+          emptyState.style.display = 'block';
+          cartContent.style.display = 'none';
+          return;
+        }
+        
+        emptyState.style.display = 'none';
+        cartContent.style.display = 'flex';
+        
+        let subtotal = 0;
+        let totalItems = 0;
+        
+        container.innerHTML = cart.map(item => {
+          const product = getProductById(item.id);
+          subtotal += product.price * item.quantity;
+          return `
+            <div style="display:flex; gap:16px; align-items:center; border-bottom:1px solid var(--border); padding-bottom:16px;">
+              <img src="${product.image}" style="width:80px; height:80px; object-fit:cover; border-radius:4px;">
+              <div style="flex:1;">
+                <h4 style="margin:0;">${product.title}</h4>
+                <p style="margin:0; color:var(--muted);">₹${product.price}</p>
+              </div>
+              <div style="display:flex; gap:8px; align-items:center;">
+                 <button onclick="updateItemQty('${product.id}', -1)" class="btn btn-outline" style="padding:4px 8px;">-</button>
+                 <span>${item.quantity}</span>
+                 <button onclick="updateItemQty('${product.id}', 1)" class="btn btn-outline" style="padding:4px 8px;">+</button>
+              </div>
+              <button onclick="removeItem('${product.id}')" class="btn btn-outline" style="color:red; border:none;"><i data-lucide="trash-2"></i></button>
+            </div>
+          `;
+        }).join('');
+        
+        document.getElementById('cart-total').textContent = `Total: ₹${subtotal}`;
+        lucide.createIcons();
+      };
+      document.addEventListener('DOMContentLoaded', renderCart);
+    </script>
+</body>
+</html>

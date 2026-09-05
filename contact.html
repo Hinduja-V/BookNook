@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | BookNook</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+    <div id="layout-header"></div>
+    <main class="container" style="padding: 60px 0; max-width:600px; margin: 0 auto;">
+      <h1 style="font-family:'Playfair Display',serif; margin-bottom:16px; text-align:center;">Contact Us</h1>
+      <p style="text-align:center; color:var(--muted); margin-bottom:40px;">We'd love to hear from you. Send us a message.</p>
+      <form onsubmit="event.preventDefault(); showToast('Message sent successfully!'); this.reset();">
+        <input type="text" placeholder="Your Name" required style="width:100%; padding:12px; margin-bottom:16px; border:1px solid var(--border); border-radius:4px;">
+        <input type="email" placeholder="Your Email" required style="width:100%; padding:12px; margin-bottom:16px; border:1px solid var(--border); border-radius:4px;">
+        <textarea rows="5" placeholder="Your Message" required style="width:100%; padding:12px; margin-bottom:16px; border:1px solid var(--border); border-radius:4px; resize:vertical;"></textarea>
+        <button class="btn btn-primary" type="submit" style="width:100%;">Send Message</button>
+      </form>
+    </main>
+    <div id="layout-footer"></div>
+    <div id="toast-container" class="toast-container"></div>
+    <script src="js/data.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

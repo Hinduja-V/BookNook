@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop | BookNook</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+    <div id="layout-header"></div>
+    <main class="container" style="padding: 40px 0;">
+      <div style="display: flex; gap: 32px;">
+        <aside style="width: 250px;">
+           <h3 style="margin-bottom:16px;">Categories</h3>
+           <!-- basic filter UI placeholder -->
+           <ul style="list-style:none; padding:0;">
+             <li style="margin-bottom:8px;"><a href="?category=books">Books</a></li>
+             <li style="margin-bottom:8px;"><a href="?category=stationery">Stationery</a></li>
+           </ul>
+        </aside>
+        <div style="flex:1;">
+           <h1 style="margin-bottom:16px; font-family:'Playfair Display', serif;">Shop</h1>
+           <div id="results-count" style="margin-bottom:24px; color:var(--muted);"></div>
+           <div id="products-grid" class="products-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 32px;"></div>
+           <div id="empty-state" style="display:none; text-align:center; padding: 40px;">No products found.</div>
+        </div>
+      </div>
+    </main>
+    <div id="layout-footer"></div>
+    <div id="toast-container" class="toast-container"></div>
+    <script src="js/data.js"></script>
+    <script src="js/app.js"></script>
+    <script>
+      let currentProducts = [...products];
+      
+      const renderGrid = () => {
+        const grid = document.getElementById('products-grid');
+        const empty = document.getElementById('empty-state');
+        const count = document.getElementById('results-count');
+        
+        if (currentProducts.length === 0) {
+          grid.style.display = 'none';
+          empty.style.display = 'block';
+          count.textContent = '0 results';
+        } else {
+          grid.style.display = 'grid';
+          empty.style.display = 'none';
+          grid.innerHTML = currentProducts.map(createProductCard).join('');
+          count.textContent = `Showing ${currentProducts.length} product${currentProducts.length > 1 ? 's' : ''}`;
+        }
+        lucide.createIcons();
+      };
+      document.addEventListener('DOMContentLoaded', renderGrid);
+    </script>
+</body>
+</html>

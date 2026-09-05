@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wishlist | BookNook</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+    <div id="layout-header"></div>
+    <main class="container" style="padding: 60px 0;">
+      <h1 style="font-family:'Playfair Display',serif; margin-bottom:32px;">My Wishlist</h1>
+      <div id="empty-wishlist" style="display:none; text-align:center; padding: 40px;">Your wishlist is empty.</div>
+      <div id="wishlist-grid" class="products-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 32px;"></div>
+    </main>
+    <div id="layout-footer"></div>
+    <div id="toast-container" class="toast-container"></div>
+    <script src="js/data.js"></script>
+    <script src="js/app.js"></script>
+    <script>
+      const renderWishlist = () => {
+        const wishlist = storage.get('wishlist', []);
+        const grid = document.getElementById('wishlist-grid');
+        const empty = document.getElementById('empty-wishlist');
+        
+        if (wishlist.length === 0) {
+          empty.style.display = 'block';
+          grid.style.display = 'none';
+        } else {
+          empty.style.display = 'none';
+          grid.style.display = 'grid';
+          
+          const itemsHtml = wishlist.map(id => {
+            const product = getProductById(id);
+            if (!product) return '';
+            return createProductCard(product);
+          }).join('');
+          
+          grid.innerHTML = itemsHtml;
+          lucide.createIcons();
+        }
+      };
+      document.addEventListener('DOMContentLoaded', renderWishlist);
+    </script>
+</body>
+</html>

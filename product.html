@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product | BookNook</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+    <div id="layout-header"></div>
+    <main class="container" style="padding: 60px 0;">
+      <div id="product-container" style="display:flex; gap: 40px;">
+        <!-- Hydrated by JS -->
+      </div>
+    </main>
+    <div id="layout-footer"></div>
+    <div id="toast-container" class="toast-container"></div>
+    <script src="js/data.js"></script>
+    <script src="js/app.js"></script>
+    <script>
+      let currentProduct = null;
+      let qty = 1;
+      
+      const updateQty = (change) => {
+        qty = Math.max(1, qty + change);
+        document.getElementById('qty-input').value = qty;
+      };
+      
+      const doAddToCart = () => {
+        addToCart(currentProduct.id, qty);
+      };
+      
+      document.addEventListener('DOMContentLoaded', () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const productId = urlParams.get('id') || 'b1'; // default to b1 if none provided
+        
+        currentProduct = getProductById(productId);
+        const container = document.getElementById('product-container');
+        
+        if (!currentProduct) {
+           container.innerHTML = '<p>Product not found.</p>';
+           return;
+        }
+        
+        container.innerHTML = `
+          <div style="flex:1;">
+            <img src="${currentProduct.image}" style="width:100%; border-radius:8px;" alt="${currentProduct.title}">
+          </div>
+          <div style="flex:1;">
+            <h1 style="font-family:'Playfair Display',serif;">${currentProduct.title}</h1>
+            <p style="color:var(--muted); font-size:1.2rem; margin-bottom:16px;">${currentProduct.author}</p>
+            <h2 style="margin-bottom:24px;">₹${currentProduct.price}</h2>
+            <p style="line-height:1.6; margin-bottom:24px;">${currentProduct.description || 'A wonderful read.'}</p>
+            <div style="display:flex; gap:16px; margin-bottom:24px; align-items:center;">
+              <button onclick="updateQty(-1)" class="btn btn-outline" style="padding:8px 16px;">-</button>
+              <input id="qty-input" type="text" value="1" readonly style="width:40px; text-align:center; border:none;">
+              <button onclick="updateQty(1)" class="btn btn-outline" style="padding:8px 16px;">+</button>
+            </div>
+            <button class="btn btn-primary" onclick="doAddToCart()" style="width:100%; padding:16px;">Add to Cart</button>
+          </div>
+        `;
+        lucide.createIcons();
+      });
+    </script>
+</body>
+</html>
