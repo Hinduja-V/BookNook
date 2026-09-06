@@ -57,7 +57,7 @@ const products = [
     language: 'English',
     pages: 320,
     description: 'No matter your goals, Atomic Habits offers a proven framework for improving--every day. James Clear reveals practical strategies to form good habits, break bad ones, and master the tiny behaviors that lead to remarkable results.',
-    image: 'https://images.unsplash.com/photo-1589998059171-989d887dda19?auto=format&fit=crop&q=80&w=800',
+    image: 'https://www.thezappybox.com/cdn/shop/files/atomic-habits_gallery_hi-res_01.jpg',
     stock: 120,
     featured: true,
     newArrival: true
@@ -120,7 +120,7 @@ const products = [
     language: 'N/A',
     pages: 240,
     description: 'A beautiful handcrafted leather journal with 120gsm dotted pages, perfect for bullet journaling, sketching, or capturing your thoughts.',
-    image: 'https://images.unsplash.com/photo-1585336261022-680e295ce3fe?auto=format&fit=crop&q=80&w=800',
+    image: 'https://m.media-amazon.com/images/I/810p1uVhDbL._AC_UF1000,1000_QL80_.jpg',
     stock: 50,
     featured: true,
     newArrival: false
@@ -162,7 +162,7 @@ const products = [
     language: 'English',
     pages: 320,
     description: 'A great modern classic and the prelude to The Lord of the Rings. Bilbo Baggins is a hobbit who enjoys a comfortable, unambitious life, rarely traveling any farther than his pantry or cellar.',
-    image: 'https://images.unsplash.com/photo-1629196914271-92be344d9522?auto=format&fit=crop&q=80&w=800',
+    image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThb2-aAORTNapkA-lZ83YXu-QH2zlDi7QODAuZIV-R3N7B_-DmP4dWiVY&s=10',
     stock: 12,
     featured: true,
     newArrival: false
@@ -183,7 +183,7 @@ const products = [
     language: 'N/A',
     pages: 0,
     description: 'An elegantly designed fountain pen with a smooth medium nib. Includes a converter and 2 blue ink cartridges. Perfect for writers and professionals.',
-    image: 'https://images.unsplash.com/photo-1527010154944-f2241763d806?auto=format&fit=crop&q=80&w=800',
+    image: 'https://cdn.shopify.com/s/files/1/0670/0669/3540/files/MV_WL_FP_BK_Face-5.jpg?v=1774652630',
     stock: 20,
     featured: true,
     newArrival: true
@@ -204,7 +204,7 @@ const products = [
     language: 'English',
     pages: 336,
     description: 'Rich Dad Poor Dad is Robert\'s story of growing up with two dads — his real father and the father of his best friend, his rich dad — and the ways in which both men shaped his thoughts about money and investing.',
-    image: 'https://images.unsplash.com/photo-1554774853-719586f82d77?auto=format&fit=crop&q=80&w=800',
+    image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_f6aK_KZpJoXS0x-s0AWW6EPVxGzJuSW6nhzGgDvc2yMK7Zn4kOZ8VqY&s=10',
     stock: 65,
     featured: false,
     newArrival: false
@@ -225,7 +225,7 @@ const products = [
     language: 'English',
     pages: 328,
     description: 'Among the seminal texts of the 20th century, Nineteen Eighty-Four is a rare work that grows more haunting as its futuristic purgatory becomes more real.',
-    image: 'https://images.unsplash.com/photo-1495640388908-05fa85288e61?auto=format&fit=crop&q=80&w=800',
+    image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQp6NQweoo0w9fwptJfxuW5c2PazCKPGwDilROAPLETF0af94Ncza__gPs&s=10',
     stock: 45,
     featured: false,
     newArrival: false
@@ -267,7 +267,7 @@ const products = [
     language: 'N/A',
     pages: 0,
     description: 'Professional grade watercolor set featuring 24 highly pigmented half-pans in a compact metal tin with a mixing palette.',
-    image: 'https://images.unsplash.com/photo-1560780552-ba54683cb263?auto=format&fit=crop&q=80&w=800',
+    image: 'https://m.media-amazon.com/images/I/81+F8TswxWL.jpg',
     stock: 15,
     featured: false,
     newArrival: false
@@ -351,7 +351,7 @@ const products = [
     language: 'English',
     pages: 304,
     description: 'Between life and death there is a library, and within that library, the shelves go on forever. Every book provides a chance to try another life you could have lived.',
-    image: 'https://images.unsplash.com/photo-1532012197267-da84d127e765?auto=format&fit=crop&q=80&w=800',
+    image: 'https://m.media-amazon.com/images/I/61FxkS56t5L._AC_UF1000,1000_QL80_.jpg',
     stock: 40,
     featured: false,
     newArrival: false
@@ -393,7 +393,7 @@ const products = [
     language: 'N/A',
     pages: 0,
     description: 'Everything you need to begin your calligraphy journey. Includes 2 wooden nib holders, 5 assorted nibs, 3 bottles of premium ink, and a practice pad.',
-    image: 'https://images.unsplash.com/photo-1527010154944-f2241763d806?auto=format&fit=crop&q=80&w=800',
+    image: 'https://djl2kq23xfhqi.cloudfront.net/productimages/WebP/JCPS00.webp',
     stock: 10,
     featured: false,
     newArrival: true
